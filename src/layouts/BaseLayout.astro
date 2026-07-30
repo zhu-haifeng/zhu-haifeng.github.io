@@ -1,0 +1,48 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+}
+
+const {
+  title = '山月随想录',
+  description = '旅行、城市与途中所想。',
+  image = '/images/beijing/dji_export_photo_20260729172202543_1785318125515edit.jpg',
+  article = false,
+} = Astro.props;
+const pageTitle = title === '山月随想录' ? title : `${title}｜山月随想录`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="山月随想录" href="/rss.xml" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="theme-color" content="#f5f6f4" />
+    <title>{pageTitle}</title>
+  </head>
+  <body id="top">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <a class="back-top" href="#top" aria-label="返回顶部" title="返回顶部">↑</a>
+  </body>
+</html>
