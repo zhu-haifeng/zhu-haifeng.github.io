@@ -1,0 +1,8 @@
+---
+import source from '../content/posts/you-qi-wei-gan.md?raw';
+
+const start = source.indexOf('<div class="yqwg-article">');
+const markup = start >= 0 ? source.slice(start) : '';
+---
+
+<Fragment set:html={markup} />

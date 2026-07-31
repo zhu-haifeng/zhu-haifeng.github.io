@@ -14,6 +14,7 @@ const posts = defineCollection({
     section: z.string().default('随笔'),
     tocDepth: z.union([z.literal(2), z.literal(3)]).default(3),
     tags: z.array(z.string()).default([]),
+    presentation: z.enum(['standard', 'showcase']).default('standard'),
     draft: z.boolean().default(false),
   }),
 });

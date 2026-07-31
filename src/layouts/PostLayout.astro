@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import YqwgArticle from '../components/YqwgArticle.astro';
 
 interface Heading {
   depth: number;
@@ -17,17 +18,20 @@ interface Props {
   tocDepth?: 2 | 3;
   headings?: Heading[];
   tags?: string[];
+  presentation?: 'standard' | 'showcase';
 }
 
-const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [] } = Astro.props;
+const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [], presentation = 'standard' } = Astro.props;
 const sectionHref = section === '舞台记录' ? '/drama/' : '/#articles';
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 && heading.depth === 3));
+const isYqwgProgramme = title.startsWith('油漆未干');
+const isShowcase = presentation === 'showcase' && !isYqwgProgramme;
 ---
 
 <BaseLayout title={title} description={description} image={cover} article>
-  <article class="post-shell">
-    <header class="post-header">
+  <article class:list={['post-shell', { 'post-shell-showcase': isShowcase }] }>
+    {!isShowcase && <header class="post-header">
       <a class="post-kicker" href={sectionHref}>{section}</a>
       <h1>{title}</h1>
       <p class="post-description">{description}</p>
@@ -41,10 +45,10 @@ const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 
           {tags.map((tag) => <span>{tag}</span>)}
         </div>
       )}
-    </header>
+    </header>}
 
-    <div class="post-grid">
-      {toc.length > 0 && (
+    <div class:list={['post-grid', { 'post-grid-showcase': isShowcase }] }>
+      {!isShowcase && toc.length > 0 && (
         <aside class="post-toc" aria-label="文章目录">
           <p>本文目录</p>
           <nav>
@@ -55,7 +59,7 @@ const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 
         </aside>
       )}
       <div class="post-content">
-        <slot />
+        {isYqwgProgramme ? <YqwgArticle /> : <slot />}
       </div>
     </div>
   </article>
