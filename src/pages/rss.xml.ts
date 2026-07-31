@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ site }) => {
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>山月随想录</title>
+    <title>Joseph</title>
     <link>${new URL('/', site).href}</link>
     <description>旅行、城市与途中所想。</description>
     ${items}

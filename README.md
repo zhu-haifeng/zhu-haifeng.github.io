@@ -1,4 +1,4 @@
-# 山月随想录
+# Joseph
 
 基于 Astro 的纯静态个人博客，部署到 GitHub Pages。
 
