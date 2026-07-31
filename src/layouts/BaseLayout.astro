@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ArticleEnhancements from '../components/ArticleEnhancements.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -42,6 +43,7 @@ const socialImage = new URL(image, Astro.site);
     <main>
       <slot />
     </main>
+    {article && <ArticleEnhancements />}
     <Footer />
     <a class="back-top" href="#top" aria-label="返回顶部" title="返回顶部">↑</a>
   </body>
