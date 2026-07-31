@@ -5,6 +5,7 @@ publishedAt: 2026-07-30
 updatedAt: 2026-07-31
 cover: /images/beijing/dji_export_photo_20260729172202543_1785318125515edit.jpg
 coverAlt: 从景山南望故宫与北京中轴线
+section: 旅行札记
 tags:
   - 北京
   - 旅行

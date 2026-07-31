@@ -10,6 +10,8 @@ const posts = defineCollection({
     updatedAt: z.coerce.date().optional(),
     cover: z.string(),
     coverAlt: z.string(),
+    section: z.string().default('随笔'),
+    tocDepth: z.union([z.literal(2), z.literal(3)]).default(3),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),

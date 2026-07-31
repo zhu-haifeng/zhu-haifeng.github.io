@@ -486,6 +486,33 @@ a {
   text-align: center;
 }
 
+.post-content table {
+  width: 100%;
+  margin: 22px 0 28px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.post-content th,
+.post-content td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.post-content th {
+  color: var(--paper);
+  background: var(--ink);
+  font-weight: 600;
+}
+
+.post-content td:first-child {
+  width: 32%;
+  color: var(--red);
+  background: var(--soft-red);
+}
+
 .post-content hr {
   width: 72px;
   margin: 54px auto 34px;

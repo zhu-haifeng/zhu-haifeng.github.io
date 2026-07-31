@@ -13,19 +13,21 @@ interface Props {
   publishedAt: Date;
   updatedAt?: Date;
   cover: string;
+  section?: string;
+  tocDepth?: 2 | 3;
   headings?: Heading[];
   tags?: string[];
 }
 
-const { title, description, publishedAt, updatedAt, cover, headings = [], tags = [] } = Astro.props;
+const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [] } = Astro.props;
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
-const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 && heading.depth === 3));
 ---
 
 <BaseLayout title={title} description={description} image={cover} article>
   <article class="post-shell">
     <header class="post-header">
-      <a class="post-kicker" href="/#articles">旅行札记</a>
+      <a class="post-kicker" href="/#articles">{section}</a>
       <h1>{title}</h1>
       <p class="post-description">{description}</p>
       <div class="post-meta">
