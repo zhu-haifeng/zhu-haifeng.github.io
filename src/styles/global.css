@@ -557,7 +557,8 @@ a {
   margin: 22px 0 28px;
 }
 
-.post-content figure.portrait {
+.post-content figure.portrait,
+.post-content figure.square {
   width: 50%;
   margin-right: auto;
   margin-left: auto;
@@ -578,6 +579,54 @@ a {
   font-size: 12px;
   line-height: 1.6;
   text-align: center;
+}
+
+.post-content .image-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 6px;
+}
+
+.post-content .image-pair figure,
+.post-content .image-pair figure.portrait {
+  width: 100%;
+  margin: 0;
+}
+
+.post-content .image-pair-caption {
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.post-content .article-card {
+  display: block;
+  margin: 20px 0 28px;
+  padding: 15px 18px;
+  border-left: 3px solid var(--red);
+  color: var(--ink);
+  background: #f2f4f1;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.post-content .article-card:hover {
+  background: var(--red-soft);
+  transform: translateX(3px);
+}
+
+.post-content .article-card-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.post-content .article-card strong {
+  color: var(--ink);
+  font-size: 15px;
 }
 
 .post-content .roster-grid {
@@ -970,7 +1019,8 @@ a {
     margin: 18px 0 24px;
   }
 
-  .post-content figure.portrait {
+  .post-content figure.portrait,
+  .post-content figure.square {
     width: 50%;
   }
 
