@@ -9,8 +9,22 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const relatedPosts = posts
+  .filter((candidate) => candidate.id !== post.id)
+  .map((candidate) => ({
+    id: candidate.id,
+    title: candidate.data.title,
+    description: candidate.data.description,
+    cover: candidate.data.cover,
+    coverAlt: candidate.data.coverAlt,
+    sharedTags: candidate.data.tags.filter((tag) => post.data.tags.includes(tag)),
+  }))
+  .filter((candidate) => candidate.sharedTags.length > 0)
+  .sort((a, b) => b.sharedTags.length - a.sharedTags.length)
+  .slice(0, 3);
 ---
 
-<PostLayout {...post.data} headings={headings}>
+<PostLayout {...post.data} headings={headings} relatedPosts={relatedPosts}>
   <Content />
 </PostLayout>

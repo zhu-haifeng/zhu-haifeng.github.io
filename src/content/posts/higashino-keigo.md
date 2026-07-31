@@ -2,8 +2,8 @@
 title: 东野圭吾走了：106本书、1亿册销量，以及一代人的人性推理课
 description: 从《秘密》的银幕记忆出发，回望东野圭吾的出版纪录、文学位置、代表作品与影视改编。
 publishedAt: 2026-07-28
-cover: /images/higashino/xianyi-ren-x.jpg
-coverAlt: 东野圭吾《嫌疑人X的献身》书封
+cover: /images/higashino/higashino-keigo-cover.jpg
+coverAlt: 青年时期的东野圭吾黑白照片
 section: 阅读札记
 tocDepth: 2
 tags:

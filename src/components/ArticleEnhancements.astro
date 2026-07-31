@@ -2,10 +2,13 @@
 
 <dialog class="image-lightbox" aria-label="图片预览">
   <button class="lightbox-close" type="button" aria-label="关闭图片预览" title="关闭">×</button>
+  <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张图片" title="上一张">‹</button>
   <figure>
     <img alt="" />
     <figcaption></figcaption>
   </figure>
+  <span class="lightbox-count" aria-live="polite"></span>
+  <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张图片" title="下一张">›</button>
 </dialog>
 
 <script>
@@ -15,6 +18,9 @@
   const dialogImage = dialog?.querySelector<HTMLImageElement>('img');
   const caption = dialog?.querySelector<HTMLElement>('figcaption');
   const close = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
+  const previous = dialog?.querySelector<HTMLButtonElement>('.lightbox-prev');
+  const next = dialog?.querySelector<HTMLButtonElement>('.lightbox-next');
+  const count = dialog?.querySelector<HTMLElement>('.lightbox-count');
 
   const updateProgress = () => {
     if (!progress || !content) return;
@@ -28,18 +34,30 @@
   window.addEventListener('scroll', updateProgress, { passive: true });
   window.addEventListener('resize', updateProgress);
 
-  if (content && dialog && dialogImage && caption && close) {
+  if (content && dialog && dialogImage && caption && close && previous && next && count) {
     const images = [...content.querySelectorAll<HTMLImageElement>('img')];
-    images.forEach((image) => {
+    let activeIndex = 0;
+
+    const showImage = (index: number) => {
+      activeIndex = (index + images.length) % images.length;
+      const image = images[activeIndex];
+      dialogImage.src = image.currentSrc || image.src;
+      dialogImage.alt = image.alt;
+      caption.textContent = image.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || image.alt;
+      count.textContent = `${activeIndex + 1} / ${images.length}`;
+      previous.hidden = images.length < 2;
+      next.hidden = images.length < 2;
+      count.hidden = images.length < 2;
+    };
+
+    images.forEach((image, index) => {
       image.classList.add('lightbox-trigger');
       image.tabIndex = 0;
       image.setAttribute('role', 'button');
       image.setAttribute('aria-label', `放大查看：${image.alt || '图片'}`);
 
       const open = () => {
-        dialogImage.src = image.currentSrc || image.src;
-        dialogImage.alt = image.alt;
-        caption.textContent = image.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || image.alt;
+        showImage(index);
         dialog.showModal();
       };
 
@@ -53,10 +71,25 @@
     });
 
     close.addEventListener('click', () => dialog.close());
+    previous.addEventListener('click', () => showImage(activeIndex - 1));
+    next.addEventListener('click', () => showImage(activeIndex + 1));
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
     });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') showImage(activeIndex - 1);
+      if (event.key === 'ArrowRight') showImage(activeIndex + 1);
+    });
   }
+
+  const tocDetails = document.querySelector<HTMLDetailsElement>('.post-toc-details');
+  const mobileToc = window.matchMedia('(max-width: 820px)');
+  const syncToc = (mobile: boolean) => {
+    if (!tocDetails) return;
+    tocDetails.open = !mobile;
+  };
+  syncToc(mobileToc.matches);
+  mobileToc.addEventListener('change', (event) => syncToc(event.matches));
 
   const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>('.post-toc a[href^="#"]')];
   const sections = tocLinks

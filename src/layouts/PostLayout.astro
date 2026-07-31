@@ -19,9 +19,17 @@ interface Props {
   headings?: Heading[];
   tags?: string[];
   presentation?: 'standard' | 'showcase';
+  relatedPosts?: Array<{
+    id: string;
+    title: string;
+    description: string;
+    cover: string;
+    coverAlt: string;
+    sharedTags: string[];
+  }>;
 }
 
-const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [], presentation = 'standard' } = Astro.props;
+const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [], presentation = 'standard', relatedPosts = [] } = Astro.props;
 const sectionHref = section === '舞台记录' ? '/drama/' : '/#articles';
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 && heading.depth === 3));
@@ -50,17 +58,42 @@ const isShowcase = presentation === 'showcase' && !isYqwgProgramme;
     <div class:list={['post-grid', { 'post-grid-showcase': isShowcase }] }>
       {!isShowcase && toc.length > 0 && (
         <aside class="post-toc" aria-label="文章目录">
-          <p>本文目录</p>
-          <nav>
-            {toc.map((heading) => (
-              <a class:list={{ nested: heading.depth === 3 }} href={`#${heading.slug}`}>{heading.text}</a>
-            ))}
-          </nav>
+          <details class="post-toc-details" open>
+            <summary>本文目录</summary>
+            <nav>
+              {toc.map((heading) => (
+                <a class:list={{ nested: heading.depth === 3 }} href={`#${heading.slug}`}>{heading.text}</a>
+              ))}
+            </nav>
+          </details>
         </aside>
       )}
       <div class="post-content">
         {isYqwgProgramme ? <YqwgArticle /> : <slot />}
       </div>
     </div>
+
+    {relatedPosts.length > 0 && (
+      <section class="related-posts" aria-labelledby="related-posts-title">
+        <div class="related-posts-heading">
+          <p>KEEP READING</p>
+          <h2 id="related-posts-title">相关推荐</h2>
+        </div>
+        <div class="related-posts-list">
+          {relatedPosts.map((related) => (
+            <article>
+              <a class="related-post-image" href={`/posts/${related.id}/`}>
+                <img src={related.cover} alt={related.coverAlt} loading="lazy" decoding="async" />
+              </a>
+              <div>
+                <p>{related.sharedTags.join(' · ')}</p>
+                <h3><a href={`/posts/${related.id}/`}>{related.title}</a></h3>
+                <span>{related.description}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
   </article>
 </BaseLayout>

@@ -2,8 +2,8 @@
 title: 告白话剧社历届管理层
 description: 告白话剧社 2015-2016 至 2026-2027 的管理层名单与头像。
 publishedAt: 2026-07-31
-cover: /images/goback-drama-chronicle/2026-2027/wangds.webp
-coverAlt: 告白话剧社 2026-2027 届管理层成员王德发
+cover: /images/goback-drama-chronicle/cover.png
+coverAlt: 告白话剧社社徽
 section: 舞台记录
 tocDepth: 2
 tags:
