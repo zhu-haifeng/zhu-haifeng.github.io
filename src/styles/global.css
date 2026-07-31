@@ -486,6 +486,35 @@ a {
   text-align: center;
 }
 
+.post-content .roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 18px 14px;
+  margin: 22px 0 30px;
+}
+
+.post-content .roster-person {
+  margin: 0;
+  text-align: center;
+}
+
+.post-content .roster-person img {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  border: 2px solid #e5d3d1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: none;
+}
+
+.post-content .roster-person figcaption {
+  margin-top: 6px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .post-content table {
   width: 100%;
   margin: 22px 0 28px;
@@ -781,6 +810,11 @@ a {
 
   .post-content figure.portrait {
     width: 50%;
+  }
+
+  .post-content .roster-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 10px;
   }
 
   .about-grid {
