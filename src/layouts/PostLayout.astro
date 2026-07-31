@@ -20,6 +20,7 @@ interface Props {
 }
 
 const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [] } = Astro.props;
+const sectionHref = section === '舞台记录' ? '/drama/' : '/#articles';
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 && heading.depth === 3));
 ---
@@ -27,7 +28,7 @@ const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 
 <BaseLayout title={title} description={description} image={cover} article>
   <article class="post-shell">
     <header class="post-header">
-      <a class="post-kicker" href="/#articles">{section}</a>
+      <a class="post-kicker" href={sectionHref}>{section}</a>
       <h1>{title}</h1>
       <p class="post-description">{description}</p>
       <div class="post-meta">
