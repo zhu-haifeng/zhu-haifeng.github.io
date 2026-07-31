@@ -778,6 +778,117 @@ a {
   min-height: calc(100vh - 190px);
 }
 
+.changelog-page {
+  max-width: 960px;
+}
+
+.changelog-header {
+  padding-bottom: 38px;
+  border-bottom: 1px solid var(--line);
+}
+
+.changelog-header h1 {
+  margin: 0;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 34px;
+  line-height: 1.35;
+}
+
+.changelog-header > p:last-child {
+  max-width: 560px;
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.changelog-entry {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.changelog-date {
+  padding: 42px 28px 42px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.changelog-date span {
+  display: block;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 2px 8px;
+  color: var(--red);
+  background: var(--red-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.changelog-body {
+  position: relative;
+  padding: 40px 0 42px 42px;
+  border-left: 1px solid var(--line);
+}
+
+.changelog-body::before {
+  position: absolute;
+  top: 48px;
+  left: -5px;
+  width: 9px;
+  height: 9px;
+  background: var(--red);
+  content: "";
+}
+
+.changelog-version {
+  margin: 0 0 5px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.changelog-body h2 {
+  margin: 0;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.changelog-summary {
+  margin: 9px 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.changelog-body ul {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.changelog-body li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.change-kind {
+  margin-top: 2px;
+  padding: 1px 0;
+  color: var(--green);
+  background: #e8ede9;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.change-kind-优化 { color: #735a2e; background: #f2eadb; }
+.change-kind-修复 { color: var(--red); background: var(--red-soft); }
+
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(360px, 1.2fr);
@@ -898,12 +1009,12 @@ a {
   }
 
   .site-header nav {
-    gap: 16px;
+    gap: 12px;
   }
 
   .site-header nav a {
     padding: 18px 0 15px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .site-header nav a::after {
@@ -1036,6 +1147,38 @@ a {
 
   .about-copy p {
     font-size: 16px;
+  }
+
+  .changelog-header {
+    padding-bottom: 28px;
+  }
+
+  .changelog-entry {
+    display: block;
+  }
+
+  .changelog-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 0 0;
+  }
+
+  .changelog-date span {
+    margin-top: 0;
+  }
+
+  .changelog-body {
+    padding: 14px 0 30px 20px;
+    border-left: 1px solid var(--line);
+  }
+
+  .changelog-body::before {
+    top: 23px;
+  }
+
+  .changelog-body h2 {
+    font-size: 23px;
   }
 
   .post-grid-showcase { padding-bottom: 42px; }

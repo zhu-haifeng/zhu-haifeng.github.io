@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { changelog } from '../data/changelog';
+
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'Asia/Shanghai',
+});
+---
+
+<BaseLayout title="更新日志" description="Joseph 博客的功能、内容与体验更新记录。">
+  <section class="page-shell changelog-page">
+    <header class="changelog-header">
+      <p class="page-kicker">CHANGELOG</p>
+      <h1>更新日志</h1>
+      <p>这里记录博客新增的内容、体验优化与问题修复。</p>
+    </header>
+
+    <div class="changelog-list">
+      {changelog.map((entry, index) => (
+        <article class="changelog-entry">
+          <div class="changelog-date">
+            <time datetime={entry.date}>
+              {dateFormatter.format(new Date(`${entry.date}T00:00:00+08:00`))}
+            </time>
+            {index === 0 && <span>最新</span>}
+          </div>
+          <div class="changelog-body">
+            <p class="changelog-version">{entry.version}</p>
+            <h2>{entry.title}</h2>
+            <p class="changelog-summary">{entry.summary}</p>
+            <ul>
+              {entry.changes.map((change) => (
+                <li>
+                  <span class:list={['change-kind', `change-kind-${change.kind}`]}>{change.kind}</span>
+                  <span>{change.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
