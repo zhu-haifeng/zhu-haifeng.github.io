@@ -36,6 +36,11 @@ const socialImage = new URL(image, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
     <meta name="theme-color" content="#f5f6f4" />
+    <script is:inline>
+      const savedTheme = localStorage.getItem('joseph-theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = savedTheme || systemTheme;
+    </script>
     <title>{pageTitle}</title>
   </head>
   <body id="top">

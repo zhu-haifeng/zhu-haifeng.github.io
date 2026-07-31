@@ -12,12 +12,27 @@
   --wide: 1160px;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #202320;
+  --ground: #171917;
+  --ink: #e8ebe7;
+  --muted: #a2aaa3;
+  --line: #3a403b;
+  --red-soft: #3a2729;
+  --green: #a8c0ae;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--ground);
+}
+
+html[data-theme="dark"] {
   background: var(--ground);
 }
 
@@ -45,8 +60,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(36, 37, 35, 0.1);
-  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
 }
 
 .header-inner {
@@ -86,7 +101,7 @@ a {
 .site-header nav a {
   position: relative;
   padding: 21px 0 18px;
-  color: #4f534f;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -104,6 +119,30 @@ a {
 .site-header nav a:hover::after,
 .site-header nav a.active::after {
   opacity: 1;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 22px;
+  padding: 5px 0;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--red);
+}
+
+.theme-toggle-icon {
+  font-size: 17px;
+  line-height: 1;
 }
 
 .home-hero {
@@ -434,6 +473,39 @@ a {
 
 .post-shell {
   background: var(--paper);
+}
+
+[data-theme="dark"] .yqwg-article,
+[data-theme="dark"] .post-shell-showcase {
+  background: #18110c;
+}
+
+[data-theme="dark"] .post-content,
+[data-theme="dark"] .about-copy p,
+[data-theme="dark"] .post-description,
+[data-theme="dark"] .article-copy > p {
+  color: #d5dad5;
+}
+
+[data-theme="dark"] .article-image,
+[data-theme="dark"] .related-post-image {
+  background: #303530;
+}
+
+[data-theme="dark"] .post-content blockquote,
+[data-theme="dark"] .post-content .article-card {
+  color: #cbd2cc;
+  background: #292e2a;
+}
+
+[data-theme="dark"] .post-content h2 {
+  color: var(--ink);
+  background: var(--red-soft);
+}
+
+[data-theme="dark"] .tag-list span {
+  color: #b5ccb9;
+  background: #2d3830;
 }
 
 .post-header {
@@ -1210,9 +1282,17 @@ a {
     gap: 12px;
   }
 
+  .theme-toggle {
+    margin-left: 10px;
+  }
+
   .site-header nav a {
     padding: 18px 0 15px;
     font-size: 12px;
+  }
+
+  .theme-toggle-label {
+    display: none;
   }
 
   .site-header nav a::after {
