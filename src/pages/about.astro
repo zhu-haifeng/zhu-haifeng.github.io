@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { changelog } from '../data/changelog';
+
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <BaseLayout title="关于" description="关于 Joseph。">
@@ -32,6 +35,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         />
         <figcaption>微信扫码关注公众号</figcaption>
       </figure>
+    </section>
+
+    <section class="about-details" aria-label="关于本站">
+      <div class="about-detail-block">
+        <p class="page-kicker">ABOUT JOSEPH</p>
+        <h2>关于我与这里</h2>
+        <p>我是 Joseph，关注旅行、城市、人文、阅读与校园话剧。这里既记录走过的地方，也记录书籍、舞台和人与人之间留下的思考。</p>
+        <p>公众号文章会同步更新到本站，用于长期保存和备份冗余，以防平台删帖或内容难以找回。</p>
+      </div>
+      <div class="about-detail-block">
+        <p class="page-kicker">COLUMNS</p>
+        <h2>内容栏目</h2>
+        <ul>
+          <li><strong>旅行札记</strong><span>从城市现场出发，记录历史、人文与个人观察。</span></li>
+          <li><strong>阅读札记</strong><span>整理作家、作品和阅读过程中留下的问题。</span></li>
+          <li><strong>舞台记录</strong><span>保存告白话剧社的演出、成员与社团记忆。</span></li>
+        </ul>
+      </div>
+      <div class="about-detail-block about-links">
+        <p class="page-kicker">LINKS</p>
+        <h2>站点入口</h2>
+        <a href="https://github.com/zhu-haifeng/zhu-haifeng.github.io" rel="noreferrer">GitHub 源码 <span aria-hidden="true">↗</span></a>
+        <a href="/rss.xml">RSS 订阅 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="about-changelog" id="changelog" aria-labelledby="about-changelog-title">
+      <div class="about-detail-block">
+        <p class="page-kicker">CHANGELOG</p>
+        <h2 id="about-changelog-title">更新日志</h2>
+        <p class="about-changelog-intro">记录本站内容与功能的主要变化。</p>
+      </div>
+      <div class="about-changelog-list">
+        {changelog.map((entry) => (
+          <article>
+            <div>
+              <time datetime={entry.date}>{dateFormatter.format(new Date(`${entry.date}T00:00:00+08:00`))}</time>
+              <span>{entry.version}</span>
+            </div>
+            <h3>{entry.title}</h3>
+            <ul>
+              {entry.changes.map((change) => <li><b>{change.kind}</b>{change.text}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
     </section>
   </section>
 </BaseLayout>

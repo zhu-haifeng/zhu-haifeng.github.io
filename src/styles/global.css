@@ -1163,6 +1163,137 @@ a {
   text-align: center;
 }
 
+.about-details,
+.about-changelog {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px;
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.about-detail-block h2 {
+  margin: 0 0 14px;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.about-detail-block > p:not(.page-kicker),
+.about-detail-block li,
+.about-detail-block a {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.about-detail-block > p:not(.page-kicker) {
+  margin: 0 0 12px;
+}
+
+.about-detail-block ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-detail-block li {
+  display: grid;
+  gap: 2px;
+}
+
+.about-detail-block li strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.about-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-links a {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.about-links a:hover {
+  color: var(--red);
+}
+
+.about-links a span {
+  color: var(--red);
+}
+
+.about-changelog {
+  grid-template-columns: 0.65fr 1.35fr;
+  padding-bottom: 80px;
+}
+
+.about-changelog-intro {
+  margin-top: 0 !important;
+}
+
+.about-changelog-list {
+  display: grid;
+  gap: 28px;
+}
+
+.about-changelog-list article {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-changelog-list article:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.about-changelog-list article > div {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.about-changelog-list article > div span {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.about-changelog-list h3 {
+  margin: 7px 0 8px;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 20px;
+}
+
+.about-changelog-list ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-changelog-list li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.about-changelog-list li b {
+  display: inline-block;
+  min-width: 28px;
+  margin-right: 7px;
+  color: var(--red);
+  font-size: 11px;
+}
+
 .not-found {
   min-height: calc(100vh - 190px);
 }
@@ -1462,6 +1593,18 @@ a {
 
   .wechat-channel figure {
     width: 190px;
+  }
+
+  .about-details,
+  .about-changelog {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 48px;
+    padding-top: 36px;
+  }
+
+  .about-changelog {
+    padding-bottom: 52px;
   }
 
   .changelog-header {
