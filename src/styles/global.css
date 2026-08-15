@@ -897,6 +897,113 @@ a {
   overflow-wrap: anywhere;
 }
 
+/* Editorial treatment for the AI personal-blog field note. */
+.post-content:has(.ai-blog-marker) { color: #34463e; }
+.post-content:has(.ai-blog-marker) > :first-child { margin-top: 0; }
+.ai-blog-marker { width: 72px; height: 5px; margin: 0 0 26px; background: var(--red); }
+
+.post-content .ai-blog-cover {
+  width: 100%;
+  margin: 0 0 30px;
+  overflow: hidden;
+  border: 1px solid #d7dfd8;
+  background: #eff3ef;
+}
+
+.post-content .ai-blog-cover img { display: block; width: 100%; border: 0; border-radius: 0; box-shadow: none; }
+
+.ai-blog-lead {
+  margin: 0 0 28px;
+  padding: 20px 24px;
+  border-left: 5px solid var(--green);
+  background: #eef6eb;
+  color: #1e3f31;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 19px;
+  line-height: 1.95;
+}
+
+.post-content:has(.ai-blog-marker) p { color: #4b5a53; font-size: 15px; line-height: 2; }
+
+.post-content:has(.ai-blog-marker) h2 {
+  position: relative;
+  margin-top: 62px;
+  padding: 15px 0 13px 22px;
+  border-top: 1px solid #cfdcd2;
+  border-bottom: 1px solid #e7ede8;
+  border-left: 0;
+  color: var(--green);
+  background: transparent;
+  font-size: 27px;
+}
+
+.post-content:has(.ai-blog-marker) h2::before {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  width: 5px;
+  background: var(--red);
+  content: "";
+}
+
+.post-content:has(.ai-blog-marker) h2::after {
+  display: block;
+  margin-top: 6px;
+  color: #93a299;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  content: "FIELD NOTE / PERSONAL WEB";
+}
+
+.ai-blog-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 30px 0 38px;
+  border: 1px solid #d5e2d8;
+  background: #fbfdf9;
+}
+
+.ai-blog-metrics > div { min-height: 130px; padding: 20px 18px; border-right: 1px solid #d5e2d8; }
+.ai-blog-metrics > div:last-child { border-right: 0; }
+.ai-blog-metrics b { display: block; color: var(--green); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 34px; line-height: 1.1; }
+.ai-blog-metrics span { display: block; margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.65; }
+
+.ai-frameworks { display: grid; gap: 11px; margin: 25px 0 32px; }
+.ai-frameworks article { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px 16px; border-left: 5px solid var(--green); background: #eaf3e8; }
+.ai-frameworks b { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; }
+.ai-frameworks span { color: #405248; font-size: 14px; line-height: 1.7; }
+.ai-frameworks .wordpress { border-color: #a75b37; background: #f8ebe4; }
+.ai-frameworks .wordpress b { color: #8c472a; }
+.ai-frameworks .hugo { border-color: #d49239; background: #fff2dc; }
+.ai-frameworks .hugo b { color: #a26418; }
+.ai-frameworks .astro { border-color: #3b6f91; background: #edf4f8; }
+.ai-frameworks .astro b { color: #2d6181; }
+
+.post-content .ai-blog-terminal {
+  margin: 28px 0;
+  padding: 20px 22px;
+  overflow-x: auto;
+  border: 0;
+  background: #14211c;
+  color: #d8f5bd;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.post-content .ai-blog-terminal code { padding: 0; color: inherit; background: transparent; }
+.ai-case-label { display: block; margin: 32px 0 14px; padding-top: 12px; border-top: 1px solid #d8e2da; color: var(--red); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 2px; }
+.ai-blog-metrics-case { border-top: 4px solid var(--green); background: #f1f8ed; }
+
+[data-theme="dark"] .post-content:has(.ai-blog-marker) p { color: #c7d2ca; }
+[data-theme="dark"] .ai-blog-lead { background: #1d3025; color: #deeadf; }
+[data-theme="dark"] .post-content .ai-blog-cover { border-color: #384c40; background: #1b2a21; }
+[data-theme="dark"] .post-content:has(.ai-blog-marker) h2 { border-color: #3c5043; color: #a8d5b6; }
+[data-theme="dark"] .ai-blog-metrics { border-color: #3d5545; background: #1b2b21; }
+[data-theme="dark"] .ai-blog-metrics > div { border-color: #3d5545; }
+[data-theme="dark"] .ai-frameworks article { color: #e5ede6; }
+
 /* Dedicated programme-book treatment for the annual play archive. */
 .post-shell-showcase { background: #18110c; }
 .post-grid-showcase { display: block; padding: 0 0 80px; }
@@ -1570,6 +1677,13 @@ a {
   .post-content figure.square {
     width: 50%;
   }
+
+  .ai-blog-lead { padding: 18px 18px; font-size: 17px; }
+  .post-content:has(.ai-blog-marker) h2 { margin-top: 46px; font-size: 23px; }
+  .ai-blog-metrics { grid-template-columns: 1fr; }
+  .ai-blog-metrics > div { min-height: 0; border-right: 0; border-bottom: 1px solid #d5e2d8; }
+  .ai-blog-metrics > div:last-child { border-bottom: 0; }
+  .ai-frameworks article { grid-template-columns: 1fr; gap: 5px; }
 
   .post-content .roster-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
