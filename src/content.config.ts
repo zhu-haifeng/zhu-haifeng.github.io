@@ -15,6 +15,7 @@ const posts = defineCollection({
     tocDepth: z.union([z.literal(2), z.literal(3)]).default(3),
     tags: z.array(z.string()).default([]),
     presentation: z.enum(['standard', 'showcase']).default('standard'),
+    related: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
   }),
 });

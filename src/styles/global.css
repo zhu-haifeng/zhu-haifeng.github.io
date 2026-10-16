@@ -1786,3 +1786,308 @@ a {
     transition: none;
   }
 }
+
+/* ============================================================= */
+/* 告白之夜 · 迎新专场宣传文章 (gaobai-night-2026)                 */
+/* ============================================================= */
+
+.post-content .gbn-slogan {
+  margin: 4px 0 30px;
+  padding: 38px 24px 34px;
+  border-left: 0;
+  border-radius: 6px;
+  text-align: center;
+  color: #f2e8d6;
+  background:
+    radial-gradient(120% 140% at 50% -20%, rgba(154, 121, 72, 0.28), transparent 60%),
+    linear-gradient(180deg, #21150d 0%, #160e08 100%);
+}
+
+.gbn-slogan .gbn-slogan-kicker {
+  margin: 0 0 14px;
+  color: #c9a35c;
+  font-size: 13px;
+  letter-spacing: 5px;
+}
+
+.gbn-slogan .gbn-slogan-main {
+  margin: 0;
+  color: #f4ecdd;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1.6;
+}
+
+.gbn-slogan .gbn-slogan-sub {
+  margin: 12px 0 0;
+  color: #a99e8c;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.post-content .gbn-info {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 6px 0 10px;
+  overflow: hidden;
+  border: 1px solid #3d2c1c;
+  border-radius: 6px;
+  background: #1c130c;
+}
+
+.gbn-info-item {
+  padding: 20px 18px;
+  text-align: center;
+}
+
+.gbn-info-item + .gbn-info-item {
+  border-left: 1px solid rgba(201, 163, 92, 0.25);
+}
+
+.gbn-info-item small {
+  display: block;
+  margin-bottom: 8px;
+  color: #c9a35c;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.gbn-info-item b {
+  display: block;
+  color: #f2e8d6;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.gbn-info-item em {
+  display: block;
+  margin-top: 3px;
+  color: #9c917e;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.post-content .gbn-play {
+  display: grid;
+  grid-template-columns: minmax(210px, 264px) minmax(0, 1fr);
+  gap: 38px;
+  align-items: center;
+  margin: 12px 0 0;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-content .gbn-play:last-child {
+  border-bottom: 0;
+}
+
+.gbn-play-reverse .gbn-poster {
+  order: 2;
+}
+
+.gbn-play-reverse .gbn-play-copy {
+  order: 1;
+}
+
+.post-content figure.gbn-poster {
+  width: auto;
+  margin: 0;
+}
+
+.post-content figure.gbn-poster img {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 16px 36px rgba(28, 31, 28, 0.22);
+}
+
+.post-content figcaption.gbn-poster-caption {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.gbn-play-index {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.post-content .gbn-play-copy h3 {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  color: var(--ink);
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+.gbn-play-en {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.post-content .gbn-tagline {
+  margin: 16px 0;
+  padding: 10px 15px;
+  border-left: 3px solid var(--red);
+  color: #5a4a3c;
+  background: var(--red-soft);
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+[data-theme="dark"] .gbn-tagline {
+  color: #d8c9b4;
+}
+
+.post-content .gbn-closing {
+  margin: 40px 0 0;
+  padding: 48px 28px 42px;
+  border-radius: 6px;
+  text-align: center;
+  color: #f2e8d6;
+  background:
+    radial-gradient(120% 150% at 50% 120%, rgba(154, 48, 56, 0.3), transparent 62%),
+    linear-gradient(180deg, #1a110b 0%, #21150d 100%);
+}
+
+.gbn-closing .gbn-closing-kicker {
+  margin: 0 0 18px;
+  color: #c9a35c;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.gbn-closing .gbn-closing-main {
+  margin: 0;
+  font-family: "Songti SC", SimSun, serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.7;
+}
+
+.gbn-closing .gbn-closing-en {
+  margin: 12px 0 22px;
+  color: #a99e8c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.gbn-closing .gbn-closing-rule {
+  width: 64px;
+  height: 2px;
+  margin: 0 auto 22px;
+  background: #c9a35c;
+}
+
+.gbn-closing p {
+  margin: 0 0 12px;
+  color: #d9cdb8;
+  font-size: 15px;
+  line-height: 2;
+  text-align: center;
+}
+
+.gbn-closing .gbn-closing-cta {
+  margin-top: 22px;
+  color: #f4ecdd;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.gbn-sign {
+  margin: 26px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.post-content .gbn-qr-lead {
+  margin: 34px auto 18px;
+  max-width: 520px;
+  color: #5a4a3c;
+  font-size: 14.5px;
+  line-height: 2;
+  text-align: center;
+}
+
+[data-theme="dark"] .gbn-qr-lead {
+  color: #cdbfaa;
+}
+
+.post-content figure.gbn-qr {
+  width: min(100%, 380px);
+  margin: 0 auto;
+}
+
+.post-content figure.gbn-qr img {
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 44px rgba(20, 12, 6, 0.35);
+}
+
+.post-content figcaption.gbn-qr-caption {
+  margin-top: 10px;
+  color: var(--gold);
+  font-size: 12.5px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .post-content .gbn-info {
+    grid-template-columns: 1fr;
+  }
+
+  .gbn-info-item + .gbn-info-item {
+    border-top: 1px solid rgba(201, 163, 92, 0.25);
+    border-left: 0;
+  }
+
+  .post-content .gbn-play,
+  .post-content .gbn-play.gbn-play-reverse {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 32px 0;
+  }
+
+  .gbn-play-reverse .gbn-poster,
+  .gbn-play-reverse .gbn-play-copy {
+    order: initial;
+  }
+
+  .post-content figure.gbn-poster {
+    width: min(72%, 280px);
+    margin: 0 auto;
+  }
+
+  .post-content figure.gbn-qr {
+    width: min(80%, 340px);
+  }
+
+  .post-content .gbn-qr-lead {
+    margin-top: 28px;
+    font-size: 14px;
+  }
+
+  .gbn-slogan .gbn-slogan-main {
+    font-size: 25px;
+  }
+
+  .gbn-closing .gbn-closing-main {
+    font-size: 23px;
+  }
+}
