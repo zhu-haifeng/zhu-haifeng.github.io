@@ -2,8 +2,10 @@
 title: 告白之夜：话剧部迎新专场
 description: 10月18日19:00，活动中心J栋，《伤心侦探》《肖像》《小品的世界》三幕连台，免费入场。
 publishedAt: 2026-10-16
-cover: /images/gaobai-night-2026/cover.png
+cover: /images/gaobai-night-2026/cover.jpg
 coverAlt: 告白之夜迎新专场宣传封面，右侧为《小品的世界》海报
+coverWidth: 1280
+coverHeight: 720
 section: 舞台记录
 tocDepth: 2
 tags:

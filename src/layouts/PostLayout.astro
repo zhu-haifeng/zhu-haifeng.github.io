@@ -14,6 +14,9 @@ interface Props {
   publishedAt: Date;
   updatedAt?: Date;
   cover: string;
+  coverAlt: string;
+  coverWidth?: number;
+  coverHeight?: number;
   section?: string;
   tocDepth?: 2 | 3;
   headings?: Heading[];
@@ -29,7 +32,7 @@ interface Props {
   }>;
 }
 
-const { title, description, publishedAt, updatedAt, cover, section = '随笔', tocDepth = 3, headings = [], tags = [], presentation = 'standard', relatedPosts = [] } = Astro.props;
+const { title, description, publishedAt, updatedAt, cover, coverAlt, coverWidth, coverHeight, section = '随笔', tocDepth = 3, headings = [], tags = [], presentation = 'standard', relatedPosts = [] } = Astro.props;
 const sectionHref = section === '舞台记录' ? '/drama/' : '/#articles';
 const dateFormatter = new Intl.DateTimeFormat('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const toc = headings.filter((heading) => heading.depth === 2 || (tocDepth === 3 && heading.depth === 3));
@@ -37,7 +40,7 @@ const isYqwgProgramme = title.startsWith('油漆未干');
 const isShowcase = presentation === 'showcase' && !isYqwgProgramme;
 ---
 
-<BaseLayout title={title} description={description} image={cover} article>
+<BaseLayout title={title} description={description} image={cover} imageAlt={coverAlt} imageWidth={coverWidth} imageHeight={coverHeight} publishedTime={publishedAt} modifiedTime={updatedAt} article>
   <article class:list={['post-shell', { 'post-shell-showcase': isShowcase }] }>
     {!isShowcase && <header class="post-header">
       <a class="post-kicker" href={sectionHref}>{section}</a>
